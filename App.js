@@ -1,12 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View ,TextInput} from 'react-native';
 
 export default function App() {
+  console.log(" executing");
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>SWCC Prediction app!</Text>
+      <TextInput  
+          style={{height: 40,backgroundColor: 'azure', fontSize: 20}}  
+          placeholder="State your name!"  
+          
+      />  
+                
       <StatusBar style="auto" />
     </View>
+    
   );
 }
 
