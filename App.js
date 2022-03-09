@@ -3,17 +3,59 @@ import { StyleSheet, Text, View ,Button, Alert,TextInput} from 'react-native';
 import React,{useState,useEffect} from 'react';
 import Header from './Components/header';
 // import Graph from './Components/Graph';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CohesiveSoil from './Components/CohesiveSoil';
+
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Header/>
+      <View style={styles.button}>
+        <Button
+          title="Plastic/Cohesive Soil"
+          onPress={() => navigation.navigate('Cohesive')}
+        />
+      </View>
+      <View style={styles.button}>
+        <Button
+          title="Granular Soil"
+          onPress={() => navigation.navigate('Granular')}
+        />
+      </View>
+    </View>
+  );
+}
+
+function Cohesive() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <CohesiveSoil/>
+    </View>
+  );
+}
+
+function Granular() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Granular function</Text>
+    </View>
+  );
+}
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [count,setcount] =useState(0);
   
   return (
-    <View style={styles.container}>
-      <Header/>
-      {/* <Graph/> */}
-      <CohesiveSoil/>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Cohesive" component={Cohesive} />
+        <Stack.Screen name="Granular" component={Granular} />
+      </Stack.Navigator>
+    </NavigationContainer>
+    
     
   );
 }
@@ -21,7 +63,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
    
   },
+  button:{
+    margin:10
+  }
 });
