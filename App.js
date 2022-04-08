@@ -10,7 +10,7 @@ import CohesiveSoil from './Components/CohesiveSoil';
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Header/>
+      {/* <Header/> */}
       <View style={styles.button}>
         <Button
           title="Plastic/Cohesive Soil"
@@ -48,9 +48,10 @@ export default function App() {
   const [count,setcount] =useState(0);
   
   return (
+    // <CohesiveSoil/>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Navigator initialRouteName="SWCC Prediction app!">
+        <Stack.Screen name="SWCC Prediction app!" component={HomeScreen} />
         <Stack.Screen name="Cohesive" component={Cohesive} />
         <Stack.Screen name="Granular" component={Granular} />
       </Stack.Navigator>
