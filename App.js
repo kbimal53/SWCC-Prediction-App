@@ -1,8 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View ,Button, Alert,TextInput} from 'react-native';
-import React,{useState,useEffect} from 'react';
-import Header from './Components/header';
-// import Graph from './Components/Graph';
+import React, {useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CohesiveSoil from './Components/CohesiveSoil';
@@ -42,13 +39,14 @@ function Granular() {
     </View>
   );
 }
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [count,setcount] =useState(0);
+  // const [count,setcount] =useState(0);
+  // const [selectedValue, setSelectedValue] = useState({type:"choose",m:0 , ac : 0,Wl:0,ξ:0,ρs:0,e:0});
   
   return (
-    // <CohesiveSoil/>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SWCC Prediction app!">
         <Stack.Screen name="SWCC Prediction app!" component={HomeScreen} />
@@ -56,7 +54,6 @@ export default function App() {
         <Stack.Screen name="Granular" component={Granular} />
       </Stack.Navigator>
     </NavigationContainer>
-    
     
   );
 }
