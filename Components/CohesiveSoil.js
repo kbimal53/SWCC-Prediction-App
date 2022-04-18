@@ -1,11 +1,12 @@
 import { View, Text, Picker, Button ,StyleSheet,TextInput, Alert} from 'react-native'
 import React , {useState} from 'react'
 import Header from './header'
-import Graph from './Graph';
+import Graph from './Graph'
+import Graph2 from './Graph2'
 
 export default function CohesiveSoil() {
     
-    const [selectedValue, setSelectedValue] = useState({type:"choose",m:0 , ac : 0,Wl:0,ξ:0,ρs:0,e:0});
+    const [selectedValue, setSelectedValue] = useState({type:"choose",m:0 , ac : 0,Wl:35.5,ρs:2650,e:0.438});
     const [seeGraph,setSeeGraph] = useState('0');
     function myfunction(val){
         if(val=="a")
@@ -16,7 +17,7 @@ export default function CohesiveSoil() {
             setSelectedValue({...selectedValue,m:2,ac:2,type:"Fine and dense sand"})
         }
         else if(val=="c"){
-            setSelectedValue({...selectedValue,m:3,ac:3,type:"Tailings Sigmaa (silty material, coarse and loose)"})
+            setSelectedValue({...selectedValue,m:0.00003,ac:0.007,type:"Tailings Sigmaa (silty material, coarse and loose)"})
         }
         else if(val=="d"){
             setSelectedValue({...selectedValue,m:4,ac:4,type:"Tailings Sigma mixed with 10% bentonite"})
@@ -32,7 +33,10 @@ export default function CohesiveSoil() {
         }
     };
 
-    
+    function notSeeGraph()
+    {
+        setSeeGraph('1');
+    };
 
         return (
             <View>
@@ -95,10 +99,19 @@ export default function CohesiveSoil() {
                     title="Calculate"
                     onPress={()=> setSeeGraph('1')}
                    />
+                   
                 </View>
     
                 :
-                <Graph/>
+                <View>
+                    <Graph data={selectedValue}/>
+                    {/* <Graph2/> */}
+                    <Button 
+                    title='back'
+                     onPress={()=> setSeeGraph('0')} 
+                    />
+                </View>    
+                
                 }
             </View>
             
