@@ -12,6 +12,7 @@ import {
   export default function Graph(props)
   {
     const mydata = [1,9.8,196,392,784,1176,1568,1960,2940,3920,4900,5880,7840,43120,372400,838880,1486660,2916480,10000000];
+    const logdata = [0.1,1,10,1e2,1e3,1e4,1e5,1e6,1e7]
     let ξ = parseFloat(props.data.ρs)*0.15;
     let hco = (ξ/parseFloat(props.data.e))*Math.pow(parseFloat(props.data.Wl),1.45);
     let ψres = 0.83*Math.pow((ξ/parseFloat(props.data.e)),1.2)*Math.pow(parseFloat(props.data.Wl),1.74);

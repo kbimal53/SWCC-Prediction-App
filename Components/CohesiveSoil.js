@@ -2,7 +2,7 @@ import { View, Text, Picker, Button ,StyleSheet,TextInput, Alert} from 'react-na
 import React , {useState} from 'react'
 import Header from './header'
 import Graph from './Graph'
-import Graph2 from './Graph2'
+import  {GoogleCharts}  from './GoogleCharts'
 
 export default function CohesiveSoil() {
     
@@ -104,8 +104,10 @@ export default function CohesiveSoil() {
     
                 :
                 <View>
-                    <Graph data={selectedValue}/>
-                    {/* <Graph2/> */}
+                    {/* <Graph data={selectedValue}/> */}
+                    {/* <Graph3/>
+                    <Graph2/> */}
+                    <GoogleCharts/>
                     <Button 
                     title='back'
                      onPress={()=> setSeeGraph('0')} 
