@@ -1,6 +1,7 @@
 import { View, Text, Picker, Button ,StyleSheet,TextInput, Alert} from 'react-native'
 import React , {useState} from 'react'
 import {GChartGranular} from './GChartGranular'
+import { GChartCoarseGrained } from './GChartCoarseGrained';
 
 export default function CoarseGrainedSoil() {
     
@@ -40,7 +41,7 @@ export default function CoarseGrainedSoil() {
                             />
                         </View>
                         <View style={styles.box}>
-                            <Text style={styles.text}>Enter Ts</Text>
+                            <Text style={styles.text}>Enter Ts(milli Newton,mN)</Text>
                             <TextInput
                             style={styles.input}
                             keyboardType='numeric'
@@ -72,7 +73,7 @@ export default function CoarseGrainedSoil() {
     
                 :
                 <View> 
-                    <GChartGranular data={selectedValue}/>
+                    <GChartCoarseGrained data={selectedValue}/>
                     <Button 
                     title='back'
                      onPress={()=> setSeeGraph('0')} 
