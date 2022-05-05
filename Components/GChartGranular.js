@@ -1,36 +1,29 @@
 import React from "react";
-import { renderToString } from 'react-dom/server'
 import { WebView } from 'react-native-webview';
-// import { Chart } from "react-google-charts";
 import { View, Text, Dimensions,Button, StyleSheet} from 'react-native'
 
-function myCalculation(x){
-    let Sc = 1- Math.pow((Math.pow((hco/x),2)+1),props.data.m)*Math.exp(-(props.data.m)*Math.pow((hco/x),2));
-    let Cψ = 1-Math.log10(1+x/ψres)/Math.log10(1+(1e7/ψres));
-    let Sa = parseFloat(props.data.ac)*Cψ*Math.pow(hco,2/3)/(Math.exp(1/3)*Math.pow(x,1/6));
-    let SaStar = (Sa>1)?1:Sa;
-    let Sr = Sc+SaStar*(1-Sc);
-    let Theta = Sr*n;
-    return Theta;
-  }
 
-export function GoogleCharts(props) {
+
+export function GChartGranular(props) {
+  console.reportErrorsAsExceptions = false;
   const arr = [1,9.8,196,392,784,1176,1568,1960,2940,3920,4900,5880,7840,43120,372400,838880,1486660,2916480,10000000];
-    let ξ = parseFloat(props.data.ρs)*0.15;
-    let hco = (ξ/parseFloat(props.data.e))*Math.pow(parseFloat(props.data.Wl),1.45);
-    let ψres = 0.83*Math.pow((ξ/parseFloat(props.data.e)),1.2)*Math.pow(parseFloat(props.data.Wl),1.74);
+    let b = 0.75/(1+1.17*Math.log10(parseFloat(props.data.Cu)));
+    let hcoG = b/(parseFloat(props.data.e)*parseFloat(props.data.D10));
+    let ψres = 0.86*Math.pow(hcoG,1.2);
     let n =parseFloat(props.data.e)/(1+parseFloat(props.data.e)) ;
     const z = arr.map(myCalculation)
     function myCalculation(x){
-      let Sc = 1- Math.pow((Math.pow((hco/x),2)+1),props.data.m)*Math.exp(-(props.data.m)*Math.pow((hco/x),2));
+      let Sc = 1- Math.pow((Math.pow((hcoG/x),2)+1),props.data.m)*Math.exp(-(props.data.m)*Math.pow((hcoG/x),2));
       let Cψ = 1-Math.log10(1+x/ψres)/Math.log10(1+(1e7/ψres));
-      let Sa = parseFloat(props.data.ac)*Cψ*Math.pow(hco,2/3)/(Math.exp(1/3)*Math.pow(x,1/6));
+      let Sa = parseFloat(props.data.ac)*Cψ*Math.pow(hcoG,2/3)/(Math.exp(1/3)*Math.pow(x,1/6));
       let SaStar = (Sa>1)?1:Sa;
       let Sr = Sc+SaStar*(1-Sc);
       let Theta = Sr*n;
       return Theta;
     }
+  let k=100;
   console.log(z);
+  console.log(hcoG,n,b,ψres,props.data.D10,props.data.Cu,props.data.m);
   
   let jsCode = `
   google.charts.load('current', {'packages':['corechart']});
@@ -65,11 +58,11 @@ export function GoogleCharts(props) {
       curveType: 'function',
       legend: { position: 'bottom' },
       hAxis: {
-        title: 'Suction(ψ)',
+        title: 'Suction',
         scaleType:'log'
       },
       vAxis: {
-        title: 'Volumetric water Content(θ)',
+        title: 'Volumetric water Content',
       }
     }; 
 

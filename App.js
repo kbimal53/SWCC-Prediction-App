@@ -3,23 +3,36 @@ import React, {useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CohesiveSoil from './Components/CohesiveSoil';
+import GranularSoil from './Components/GranularSoil';
+import CoarseGrainedSoil from './Components/CoarseGrainedSoil';
 
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      {/* <Header/> */}
-      <View style={styles.button}>
-        <Button
-          title="Plastic/Cohesive Soil"
-          onPress={() => navigation.navigate('Cohesive')}
-        />
+      <View style={styles.model}>
+        <Text style={styles.title}>Modified Kovacs Model</Text>
+        <View style={styles.button}>
+          <Button
+            title="Plastic/Cohesive Soil"
+            onPress={() => navigation.navigate('Cohesive')}
+          />
+        </View>
+        <View style={styles.button}>
+          <Button
+            title="Granular Soil"
+            onPress={() => navigation.navigate('Granular')}
+          />
+        </View>
       </View>
-      <View style={styles.button}>
+      
+      <View style={styles.model}>
+        <Text style={styles.title}>Arya-Paris Model</Text>
         <Button
-          title="Granular Soil"
-          onPress={() => navigation.navigate('Granular')}
-        />
+            title="Coarse Grained Soil"
+            onPress={() => navigation.navigate('Coarse')}
+          />
       </View>
+        
     </View>
   );
 }
@@ -35,7 +48,14 @@ function Cohesive() {
 function Granular() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Granular function</Text>
+      <GranularSoil/>
+    </View>
+  );
+}
+function Coarse() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <CoarseGrainedSoil/>
     </View>
   );
 }
@@ -43,15 +63,14 @@ function Granular() {
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  // const [count,setcount] =useState(0);
-  // const [selectedValue, setSelectedValue] = useState({type:"choose",m:0 , ac : 0,Wl:0,ξ:0,ρs:0,e:0});
-  
+  console.reportErrorsAsExceptions = false;
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SWCC Prediction app!">
         <Stack.Screen name="SWCC Prediction app!" component={HomeScreen} />
         <Stack.Screen name="Cohesive" component={Cohesive} />
         <Stack.Screen name="Granular" component={Granular} />
+        <Stack.Screen name="Coarse" component={Coarse} />
       </Stack.Navigator>
     </NavigationContainer>
     
@@ -66,5 +85,12 @@ const styles = StyleSheet.create({
   },
   button:{
     margin:10
+  },
+  model:{
+    margin:10
+  },
+  title:{
+    padding:10,
+    fontSize:25,
   }
 });
