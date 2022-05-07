@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@dpwiese/react-native-canvas-charts": "0.0.4",
+    "@react-native-picker/picker": "^2.4.1",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
     "@syncfusion/ej2-react-charts": "^20.1.50",

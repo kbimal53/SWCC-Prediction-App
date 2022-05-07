@@ -1,4 +1,5 @@
-import { View, Text, Picker, Button ,StyleSheet,TextInput, Alert} from 'react-native'
+import { View, Text, Button, Picker,StyleSheet,TextInput, Alert} from 'react-native'
+// import {Picker} from '@react-native-picker/picker';
 import React , {useState} from 'react'
 import  {GoogleCharts}  from './GoogleCharts'
 
@@ -75,9 +76,9 @@ export default function CohesiveSoil() {
                             selectedValue={selectedValue}
                             style ={styles.picker}
                             // style={{ height: 50, width: 150 }}
-                            onValueChange={(itemValue, itemIndex) => myfunction(itemValue)}
+                            onValueChange={(itemValue, itemIndex) => myfunction(itemValue,itemIndex)}
                         >
-                            <Picker.Item label="{Choose}" value="z" />
+                            {/* <Picker.Item label="{Choose}" value="z" /> */}
                             <Picker.Item label="Coarse, uniform and relatively dense sand" value="a" />
                             <Picker.Item label="Fine and dense sand" value="b" />
                             <Picker.Item label="Tailings Sigmaa (silty material, coarse and loose)" value="c" />
@@ -134,8 +135,8 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     picker:{
-        borderWidth:1,
-        borderColor:'black',
+        borderWidth:2,
+        borderColor:'red',
         padding:8,
         margin: 10,
         height: 50,

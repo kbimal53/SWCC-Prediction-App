@@ -10,7 +10,7 @@ export function GChartCoarseGrained(props) {
     let Vb = 1/parseFloat(props.data.ρd);
     let θs = w*parseFloat(props.data.ρd);   //porosity
     let particleSize = [0.04,0.15,0.2,0.3,0.42,0.6,1];
-    let percentFiner = [2,18,28,52,70,85,100]; //for testing only.
+    let percentFiner = [props.data.a,props.data.b,props.data.c,props.data.d,props.data.e,props.data.f,props.data.g]; //for testing only.
     let sizePS = particleSize.length;
     let Mi = [];
     for(let i=1;i<sizePS;i++){
@@ -40,7 +40,7 @@ export function GChartCoarseGrained(props) {
     for(let i=0;i<sizePS-1;i++){
       ψ.push((2*parseFloat(props.data.Ts)*1e-6)/(ri[i]*1e-3));
     }
-    console.log(ψ,θ);
+    // console.log(ψ,θ);
   
   let jsCode = `
   google.charts.load('current', {'packages':['corechart']});
