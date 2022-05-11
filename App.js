@@ -14,13 +14,13 @@ function HomeScreen({ navigation }) {
         <View style={styles.button}>
           <Button
             title="Plastic/Cohesive Soil"
-            onPress={() => navigation.navigate('Cohesive')}
+            onPress={() => navigation.navigate('Cohesive Soil')}
           />
         </View>
         <View style={styles.button}>
           <Button
             title="Granular Soil"
-            onPress={() => navigation.navigate('Granular')}
+            onPress={() => navigation.navigate('Granular Soil')}
           />
         </View>
       </View>
@@ -29,7 +29,7 @@ function HomeScreen({ navigation }) {
         <Text style={styles.title}>Arya-Paris Model</Text>
         <Button
             title="Coarse Grained Soil"
-            onPress={() => navigation.navigate('Coarse')}
+            onPress={() => navigation.navigate('Coarse Grained Soil')}
           />
       </View>
         
@@ -68,9 +68,9 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SWCC Prediction app!">
         <Stack.Screen name="SWCC Prediction app!" component={HomeScreen} />
-        <Stack.Screen name="Cohesive" component={Cohesive} />
-        <Stack.Screen name="Granular" component={Granular} />
-        <Stack.Screen name="Coarse" component={Coarse} />
+        <Stack.Screen name="Cohesive Soil" component={Cohesive} />
+        <Stack.Screen name="Granular Soil" component={Granular} />
+        <Stack.Screen name="Coarse Grained Soil" component={Coarse} />
       </Stack.Navigator>
     </NavigationContainer>
     

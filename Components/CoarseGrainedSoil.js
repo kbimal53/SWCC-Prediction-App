@@ -41,7 +41,7 @@ export default function CoarseGrainedSoil() {
                             />
                         </View>
                         <View style={styles.box}>
-                            <Text style={styles.text}>Enter Ts(milli Newton,mN)</Text>
+                            <Text style={styles.text}>Enter surface tension, Ts(milli Newton,mN)</Text>
                             <TextInput
                             style={styles.mydata}
                             keyboardType='numeric'
@@ -50,7 +50,7 @@ export default function CoarseGrainedSoil() {
                             />
                         </View>
                         <View style={styles.box}>
-                            <Text style={styles.text}>Enter α</Text>
+                            <Text style={styles.text}>Enter model parameter, α</Text>
                             <TextInput
                             style={styles.mydata}
                             keyboardType='numeric'

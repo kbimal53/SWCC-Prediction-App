@@ -78,7 +78,7 @@ export default function CohesiveSoil() {
                             // style={{ height: 50, width: 150 }}
                             onValueChange={(itemValue, itemIndex) => myfunction(itemValue,itemIndex)}
                         >
-                            {/* <Picker.Item label="{Choose}" value="z" /> */}
+                            <Picker.Item label="{Choose}" value="z" />
                             <Picker.Item label="Coarse, uniform and relatively dense sand" value="a" />
                             <Picker.Item label="Fine and dense sand" value="b" />
                             <Picker.Item label="Tailings Sigmaa (silty material, coarse and loose)" value="c" />
